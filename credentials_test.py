@@ -40,13 +40,24 @@ class TestUser(unittest.TestCase):
 
     def test_save_multiple_credentials(self):
             '''
-            test_save_multiple_user to check if we can save multiple user
-            objects to our user_list
+            test_save_multiple_credentials to check if we can save multiple credentials
+            objects to our credentials_list
             '''
             self.new_credentials.save_credentials()
             test_credentials = Credentials("twitter","Bella","6579") # new credentials
             test_credentials.save_credentials()
             self.assertEqual(len(Credentials.credentials_list),2)
         
+               # More tests above
+    def test_delete_credentials(self):
+            '''
+            test_delete_credentials to test if we can remove a user from our user list
+            '''
+            self.new_credentials.save_credentials()
+            test_credentials = Credentials("twitter","Bella","6579") # new credentials
+            test_credentials.save_credentials()
+
+            self.new_credentials.delete_credentials()# Deleting credentialsobject
+            self.assertEqual(len(Credentials.credentials_list),1)
 if __name__ == '__main__':
     unittest.main()
