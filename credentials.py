@@ -27,3 +27,12 @@ class Credentials:
         '''
 
         Credentials.credentials_list.remove(self)
+        
+    @classmethod
+    def find_by_user_name1(cls,user_name1):
+        
+        for credentials in cls.credentials_list:
+            if credentials.user_name1 == user_name1:
+                return credentials
+              
+              

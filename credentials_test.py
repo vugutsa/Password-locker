@@ -1,7 +1,7 @@
 import unittest # Importing the unittest module
 from credentials import Credentials # Importing the credentials class
 
-class TestUser(unittest.TestCase):
+class TestCredentials(unittest.TestCase):
     
     '''
     Test class that defines test cases for the user class behaviours.
@@ -44,7 +44,7 @@ class TestUser(unittest.TestCase):
             objects to our credentials_list
             '''
             self.new_credentials.save_credentials()
-            test_credentials = Credentials("twitter","Bella","6579") # new credentials
+            test_credentials = Credentials("twitter","Melby","6547") # new credentials
             test_credentials.save_credentials()
             self.assertEqual(len(Credentials.credentials_list),2)
         
@@ -54,10 +54,23 @@ class TestUser(unittest.TestCase):
             test_delete_credentials to test if we can remove a user from our user list
             '''
             self.new_credentials.save_credentials()
-            test_credentials = Credentials("twitter","Bella","6579") # new credentials
+            test_credentials = Credentials("twitter","Melby","6547") # new credentials
             test_credentials.save_credentials()
 
-            self.new_credentials.delete_credentials()# Deleting credentialsobject
-            self.assertEqual(len(Credentials.credentials_list),1)
+            self.new_credentials.delete_credentials()# Deleting credentials object
+            self.assertEqual(len(Credentials.credentials_list),1) 
+            
+    def test_find_credentials_by_user_name1(self):
+        '''
+        test to check if we can find credentials by user_name and display information
+        '''
+
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("twitter","Melby","6547") # new handle
+        test_credentials.save_credentials()
+
+        found_credentials = Credentials.find_by_user_name1("Melby")
+
+        self.assertEqual(found_credentials,test_credentials) 
 if __name__ == '__main__':
     unittest.main()
