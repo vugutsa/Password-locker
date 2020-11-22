@@ -11,3 +11,11 @@ class Credentials:
         self.handle = handle
         self.user_name1 = user_name1
         self.password1 = password1
+        
+    def save_credentials(self):
+
+        '''
+        save_contact method saves contact objects into credentials_list
+        '''
+
+        Credentials.credentials_list.append(self)
